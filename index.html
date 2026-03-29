@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Minha Tinta — Histórias Reais de Tatuagem</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --off-white:#f8f8f6;
+  --black:#0a0a0a;
+  --yellow:#ffe600;
+  --yellow-dark:#e6cf00;
+  --red:#e63b2e;
+  --grey:#f0f0ee;
+  --grey2:#e4e4e2;
+  --ink3:#666;
+  --border:rgba(0,0,0,0.08);
+  --border2:rgba(0,0,0,0.04);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:'Space Grotesk',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* BREAKING BAR */
+.breaking-bar{background:var(--red);overflow:hidden;position:sticky;top:0;z-index:101;padding:0.5rem 0}
+.breaking-inner{display:flex;align-items:center}
+.breaking-tag{background:var(--black);color:var(--yellow);font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 1.2rem;white-space:nowrap;flex-shrink:0}
+.breaking-track{display:flex;gap:4rem;animation:marquee 22s linear infinite;width:max-content;padding:0 2rem}
+.breaking-item{font-family:'Oswald',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;color:white}
+.breaking-item::after{content:'★';margin-left:4rem;opacity:0.5;font-size:0.5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HEADER */
+header{background:var(--black);padding:0;border-bottom:4px solid var(--yellow);position:sticky;top:28px;z-index:100}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 3rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--white);text-decoration:none;letter-spacing:0.05em;line-height:1}
+.logo span{color:var(--yellow)}
+.header-tagline{font-family:'Oswald',sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.2em;text-transform:uppercase}
+.header-date{font-size:0.65rem;color:rgba(255,255,255,0.35)}
+nav{display:flex;gap:0;overflow-x:auto}
+nav a{font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;padding:0.8rem 1.5rem;transition:all 0.2s;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.06)}
+nav a:hover{background:var(--yellow);color:var(--black)}
+.nav-hot{background:var(--red);color:white!important}
+.nav-hot:hover{background:#c8302b!important;color:white!important}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:2fr 1fr;border-bottom:3px solid var(--black)}
+.hero-main{position:relative;overflow:hidden;min-height:560px}
+.hero-main img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.7)}
+.hero-main-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.15) 60%,transparent 100%)}
+.hero-main-content{position:absolute;bottom:0;left:0;right:0;padding:2.5rem}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--yellow);color:var(--black);font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 0.9rem;margin-bottom:1rem}
+.hero-main-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);color:white;line-height:0.95;letter-spacing:0.02em;margin-bottom:0.8rem}
+.hero-main-excerpt{font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.6;max-width:520px;margin-bottom:1.2rem}
+.hero-main-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-tag-pill{font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.3);color:white}
+.hero-read-btn{font-family:'Oswald',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--yellow);color:var(--black);padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;border:none}
+.hero-read-btn:hover{background:var(--yellow-dark)}
+.hero-sidebar{border-left:3px solid var(--black);display:flex;flex-direction:column}
+.hero-side-item{padding:1.5rem;border-bottom:2px solid var(--black);cursor:pointer;transition:background 0.2s;display:flex;flex-direction:column;gap:0.6rem;flex:1}
+.hero-side-item:last-child{border-bottom:none}
+.hero-side-item:hover{background:var(--grey)}
+.side-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:'Oswald',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red)}
+.side-title{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.15;color:var(--black)}
+.side-excerpt{font-size:0.72rem;color:var(--ink3);line-height:1.5}
+.side-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:contrast(1.05)}
+
+/* TAGS STRIP */
+.tags-strip{background:var(--yellow);padding:0.6rem 3rem;display:flex;gap:0.5rem;overflow-x:auto;border-bottom:2px solid var(--black)}
+.tag-btn{font-family:'Oswald',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--black);color:var(--yellow);padding:0.35rem 1rem;white-space:nowrap;cursor:pointer;border:none;transition:all 0.2s}
+.tag-btn:hover,.tag-btn.active{background:var(--red);color:white}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--black)}
+.stats-cell{padding:1.5rem 2rem;border-right:2px solid var(--black);background:var(--off-white)}
+.stats-cell:last-child{border-right:none}
+.stats-cell:hover{background:var(--grey)}
+.stats-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--black);line-height:1}
+.stats-label{font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-top:0.2rem}
+
+/* SECTION TITLE */
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.03em;color:var(--black);margin-bottom:0.3rem;display:flex;align-items:center;gap:0.8rem}
+.section-title-line{flex:1;height:3px;background:var(--black)}
+.section-subtitle{font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem}
+
+/* ARTICLES GRID */
+.articles-section{padding:2rem 3rem;max-width:1400px;margin:0 auto}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--black)}
+.article-card{background:var(--white);cursor:pointer;overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s}
+.article-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.article-card:nth-child(1){grid-column:span 3;display:grid;grid-template-columns:1.5fr 1fr}
+.card-img-wrap{overflow:hidden;position:relative}
+.card-img{width:100%;display:block;object-fit:cover;filter:contrast(1.05);transition:transform 0.5s}
+.article-card:hover .card-img{transform:scale(1.03)}
+.card-exclusive{position:absolute;top:0;left:0;background:var(--red);color:white;font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem}
+.card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:0.5rem;border-top:3px solid var(--yellow)}
+.article-card:nth-child(1) .card-body{border-top:none;border-left:3px solid var(--yellow);padding:2rem}
+.card-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
+.card-tag-pill{font-family:'Oswald',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--grey);color:var(--black);padding:0.2rem 0.6rem}
+.card-tag-pill.hot{background:var(--red);color:white}
+.card-tag-pill.exclusive{background:var(--black);color:var(--yellow)}
+.card-title{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;line-height:1.2;color:var(--black);flex:1}
+.article-card:nth-child(1) .card-title{font-size:clamp(1.5rem,2.8vw,2.5rem);line-height:1.05}
+.card-excerpt{font-size:0.75rem;color:var(--ink3);line-height:1.6}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:0.8rem;border-top:1px solid var(--border2)}
+.card-author{font-size:0.65rem;color:var(--ink3);font-family:'Oswald',sans-serif;letter-spacing:0.05em}
+.card-read{font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);display:flex;align-items:center;gap:0.4rem}
+.card-read::after{content:'→'}
+
+/* INSÓLITAS SECTION */
+.insolitas-section{background:var(--black);border-top:4px solid var(--yellow);border-bottom:4px solid var(--yellow);padding:3rem}
+.insolitas-inner{max-width:1400px;margin:0 auto}
+.insolitas-title{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--yellow);letter-spacing:0.03em;margin-bottom:0.3rem}
+.insolitas-sub{font-family:'Oswald',sans-serif;font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem}
+.insolitas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.1)}
+.insolita-card{background:rgba(255,255,255,0.04);padding:2rem;display:flex;flex-direction:column;gap:0.8rem;transition:background 0.2s;cursor:pointer}
+.insolita-card:hover{background:rgba(255,230,0,0.08)}
+.insolita-emoji{font-size:2.5rem;line-height:1}
+.insolita-tag{font-family:'Oswald',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--yellow)}
+.insolita-title{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:white;line-height:1.25;flex:1}
+.insolita-text{font-size:0.76rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.insolita-read{font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);display:flex;align-items:center;gap:0.4rem;margin-top:0.5rem}
+.insolita-read::after{content:'→'}
+
+/* FEATURED STORY */
+.featured-story{border-top:2px solid var(--black);border-bottom:2px solid var(--black)}
+.featured-inner{display:grid;grid-template-columns:1fr 1fr;max-width:1400px;margin:0 auto}
+.featured-img{overflow:hidden;position:relative;min-height:480px}
+.featured-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.75) contrast(1.1)}
+.featured-img-badge{position:absolute;top:0;left:0;right:0;background:var(--yellow);padding:0.7rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.featured-img-badge-text{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.05em;color:var(--black)}
+.featured-img-badge-num{font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:700;color:var(--black);letter-spacing:0.1em}
+.featured-content{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--off-white)}
+.featured-label{font-family:'Oswald',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.featured-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,4rem);color:var(--black);line-height:0.95;letter-spacing:0.02em;margin-bottom:1.2rem}
+.featured-text{font-size:0.9rem;color:#444;line-height:1.8;margin-bottom:1rem}
+.featured-quote{border-left:4px solid var(--yellow);padding:1rem 1.5rem;margin:1.5rem 0;font-family:'Oswald',sans-serif;font-size:1.2rem;font-style:italic;color:var(--black);line-height:1.4;background:var(--grey)}
+
+/* POLL */
+.poll-section{background:var(--yellow);padding:3rem;border-top:2px solid var(--black);border-bottom:2px solid var(--black)}
+.poll-inner{max-width:800px;margin:0 auto;text-align:center}
+.poll-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.03em;color:var(--black);margin-bottom:0.5rem}
+.poll-sub{font-family:'Oswald',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:2rem}
+.poll-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.poll-option{background:var(--black);color:var(--yellow);font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1.2rem;cursor:pointer;border:none;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:0.4rem}
+.poll-option:hover{background:#222}
+.poll-option-emoji{font-size:1.8rem}
+.poll-votes{font-size:0.6rem;opacity:0.5;font-weight:400;letter-spacing:0.1em}
+
+/* MAIN + SIDEBAR */
+.main-sidebar-layout{display:grid;grid-template-columns:1fr 320px;gap:0;border-top:2px solid var(--black)}
+.main-content{padding:2.5rem 3rem;border-right:2px solid var(--black)}
+.sidebar{padding:2rem}
+.sidebar-section{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:2px solid var(--black)}
+.sidebar-section:last-child{border-bottom:none}
+.sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.03em;color:var(--black);margin-bottom:0.2rem}
+.sidebar-sub{font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.2rem}
+.sidebar-item{display:flex;gap:0.8rem;padding:0.8rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:padding 0.2s}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-item:hover{padding-left:0.4rem}
+.sidebar-item-num{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--grey2);line-height:1;flex-shrink:0;width:28px}
+.sidebar-item-text{font-family:'Oswald',sans-serif;font-size:0.82rem;font-weight:600;line-height:1.3;color:var(--black)}
+.sidebar-studio{background:var(--black);padding:1.5rem}
+.sidebar-studio-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--yellow);margin-bottom:0.5rem}
+.sidebar-studio-text{font-size:0.75rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1rem}
+.sidebar-studio-detail{display:flex;gap:0.5rem;margin-bottom:0.4rem;font-size:0.72rem}
+.sidebar-studio-label{color:rgba(255,255,255,0.35);font-family:'Oswald',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;min-width:70px}
+.sidebar-studio-val{color:white}
+.btn-yellow{display:block;background:var(--yellow);color:var(--black);text-decoration:none;padding:0.8rem 1rem;font-family:'Oswald',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-top:1.2rem;transition:background 0.2s}
+.btn-yellow:hover{background:var(--yellow-dark)}
+
+/* MORE STORIES */
+.more-stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--black)}
+.more-card{background:var(--white);padding:1.5rem;cursor:pointer;display:flex;gap:1rem;transition:background 0.2s}
+.more-card:hover{background:var(--grey)}
+.more-card-img{width:100px;height:80px;object-fit:cover;flex-shrink:0;filter:contrast(1.05)}
+.more-card-content{flex:1;display:flex;flex-direction:column;gap:0.4rem}
+.more-card-tag{font-family:'Oswald',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--red)}
+.more-card-title{font-family:'Oswald',sans-serif;font-size:0.9rem;font-weight:700;line-height:1.2;color:var(--black)}
+.more-card-meta{font-size:0.62rem;color:var(--ink3)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:4px solid var(--yellow)}
+.footer-top-bar{background:var(--yellow);padding:0.8rem 3rem;display:flex;align-items:center;justify-content:space-between}
+.footer-top-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--black);letter-spacing:0.05em}
+.footer-top-tag{font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.5)}
+.footer-main{padding:3rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+.footer-brand-desc{font-size:0.78rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:260px;margin-top:0.8rem}
+.footer-col h4{font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,230,0,0.2)}
+.footer-col a{display:block;font-size:0.78rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;cursor:pointer}
+.footer-col a:hover{color:var(--yellow)}
+.footer-bottom{padding:1rem 3rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(255,255,255,0.2);font-family:'Oswald',sans-serif;letter-spacing:0.1em;text-transform:uppercase}
+
+/* ARTICLE OVERLAY */
+.article-overlay{position:fixed;inset:0;background:var(--white);z-index:200;overflow-y:auto;transform:translateY(100%);transition:transform 0.5s cubic-bezier(0.77,0,0.175,1)}
+.article-overlay.active{transform:translateY(0)}
+.article-close{position:fixed;top:1.5rem;right:2rem;z-index:201;background:var(--black);border:none;color:var(--yellow);font-family:'Oswald',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.7rem 1.5rem;cursor:pointer;display:none;transition:all 0.2s}
+.article-close:hover{background:var(--red);color:white}
+.article-close.visible{display:block}
+.article-hero-img{width:100%;height:55vh;object-fit:cover;display:block;filter:brightness(0.82) contrast(1.05)}
+.article-hero-bar{background:var(--black);padding:2.5rem 4rem;border-bottom:4px solid var(--yellow)}
+.article-hero-tags{display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.article-hero-tag{font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem}
+.article-hero-tag.yellow{background:var(--yellow);color:var(--black)}
+.article-hero-tag.red{background:var(--red);color:white}
+.article-hero-tag.white{background:transparent;border:1px solid rgba(255,255,255,0.3);color:white}
+.article-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);color:white;line-height:0.95;letter-spacing:0.02em}
+.article-body-wrap{max-width:800px;margin:0 auto;padding:4rem 2rem 7rem}
+.article-body{font-size:1rem;line-height:1.9;color:#333}
+.article-body p{margin-bottom:1.8rem}
+.article-body h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.03em;color:var(--black);margin:3rem 0 1rem;border-bottom:3px solid var(--yellow);padding-bottom:0.5rem}
+.article-quote{background:var(--black);color:var(--yellow);padding:1.5rem 2rem;margin:2rem 0;font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:700;font-style:italic;line-height:1.4}
+.article-quote::before{content:'"';font-size:3rem;line-height:0;vertical-align:-0.8rem;margin-right:0.2rem;opacity:0.4}
+.fact-box{background:var(--yellow);padding:1.5rem 2rem;margin:2rem 0;border-left:5px solid var(--black)}
+.fact-box-label{font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:0.5rem}
+.fact-box-text{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:var(--black);line-height:1.4}
+.article-inline-img{width:100%;margin:2rem 0;display:block;filter:contrast(1.04)}
+.studio-box{background:var(--off-white);border:2px solid var(--black);padding:1.5rem 2rem;margin:2.5rem 0;font-size:0.88rem;color:#444;line-height:1.8}
+.studio-box strong{color:var(--black)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .header-top{padding:0.8rem 1.5rem}
+  nav a{padding:0.7rem 1rem}
+  .hero{grid-template-columns:1fr}
+  .hero-sidebar{border-left:none;border-top:3px solid var(--black);display:grid;grid-template-columns:1fr 1fr}
+  .hero-side-item{border-right:2px solid var(--black)}
+  .hero-side-item:last-child{border-right:none}
+  .tags-strip{padding:0.6rem 1.5rem}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .articles-section{padding:2rem 1.5rem}
+  .articles-grid{grid-template-columns:1fr}
+  .article-card:nth-child(1){grid-column:auto;display:flex;flex-direction:column}
+  .article-card:nth-child(1) .card-body{border-left:none;border-top:3px solid var(--yellow)}
+  .insolitas-section{padding:2rem 1.5rem}
+  .insolitas-grid{grid-template-columns:1fr}
+  .featured-inner{grid-template-columns:1fr}
+  .featured-img{min-height:280px}
+  .featured-content{padding:2.5rem 2rem}
+  .poll-options{grid-template-columns:1fr 1fr}
+  .main-sidebar-layout{grid-template-columns:1fr}
+  .main-content{padding:2rem 1.5rem;border-right:none;border-bottom:2px solid var(--black)}
+  .sidebar{padding:1.5rem}
+  .more-stories-grid{grid-template-columns:1fr}
+  .footer-main{grid-template-columns:1fr 1fr;gap:2rem;padding:2rem 1.5rem}
+  .footer-top-bar{padding:0.8rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.3rem}
+  .article-hero-bar{padding:2rem 1.5rem}
+}
+@media(max-width:650px){
+  .logo{font-size:1.8rem}
+  .hero-sidebar{grid-template-columns:1fr}
+  .hero-side-item:nth-child(1){border-right:none;border-bottom:2px solid var(--black)}
+  .poll-options{grid-template-columns:1fr}
+  .footer-main{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- BREAKING BAR -->
+<div class="breaking-bar">
+  <div class="breaking-inner">
+    <div class="breaking-tag">🔴 A acontecer</div>
+    <div style="overflow:hidden;flex:1">
+      <div class="breaking-track">
+        <span class="breaking-item">Homem tatua mapa do tesouro no peito — achou ouro a sério</span>
+        <span class="breaking-item">Tatuagem de linha fina: o estilo mais pedido de 2024</span>
+        <span class="breaking-item">Cão reconhece o dono pela tatuagem após 3 anos separados</span>
+        <span class="breaking-item">André Hamsik Studio · Rio de Mouro · Linha Fina</span>
+        <span class="breaking-item">Pai e filho descobrem tatuagem idêntica sem nunca se terem visto</span>
+        <span class="breaking-item">Homem tatua mapa do tesouro no peito — achou ouro a sério</span>
+        <span class="breaking-item">Tatuagem de linha fina: o estilo mais pedido de 2024</span>
+        <span class="breaking-item">Cão reconhece o dono pela tatuagem após 3 anos separados</span>
+        <span class="breaking-item">André Hamsik Studio · Rio de Mouro · Linha Fina</span>
+        <span class="breaking-item">Pai e filho descobrem tatuagem idêntica sem nunca se terem visto</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div>
+      <a href="#" class="logo" onclick="closeArticle()">A Minha <span>Tinta</span></a>
+      <div class="header-tagline">Histórias reais · Tatuagens reais · Emoções reais</div>
+    </div>
+    <div class="header-date" id="hdate"></div>
+  </div>
+  <nav>
+    <a href="#artigos" class="nav-hot">🔥 Em Destaque</a>
+    <a href="#artigos">Histórias</a>
+    <a href="#insolitas">Insólitas</a>
+    <a href="#featured">Confissões</a>
+    <a href="#estudio">Estúdio</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-main">
+    <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=1200&q=90&fm=jpg&fit=crop" alt="História de tatuagem" loading="eager">
+    <div class="hero-main-overlay"></div>
+    <div class="hero-main-content">
+      <div class="hero-badge">🔥 História da semana</div>
+      <h1 class="hero-main-title">Tatuou o nome<br>do pai que não conhecia.<br>Ele encontrou-a.</h1>
+      <p class="hero-main-excerpt">Sofia, 28 anos, de Lisboa, tatuou o nome do pai biológico no pulso. Três anos depois, ele encontrou-a nas redes sociais — pela tatuagem.</p>
+      <div class="hero-main-meta">
+        <span class="hero-tag-pill">Exclusivo</span>
+        <span class="hero-tag-pill">😭 Emocionante</span>
+        <button class="hero-read-btn" onclick="openArticle(0)">Ler história completa →</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-sidebar">
+    <div class="hero-side-item" onclick="openArticle(6)">
+      <img class="side-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=600&q=80&fm=jpg&fit=crop" alt="Insólita" loading="lazy">
+      <span class="side-badge">🤯 Insólita</span>
+      <div class="side-title">Tatuou mapa do tesouro no peito. Encontrou o tesouro.</div>
+      <div class="side-excerpt">A história mais estranha de 2024 — e é completamente verdade.</div>
+    </div>
+    <div class="hero-side-item" onclick="openArticle(3)">
+      <img class="side-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=600&q=80&fm=jpg&fit=crop" alt="História" loading="lazy">
+      <span class="side-badge">💪 Superação</span>
+      <div class="side-title">Transformou as cicatrizes da cirurgia em obra de arte floral</div>
+      <div class="side-excerpt">Ana, 44 anos, conta como as flores cresceram sobre as marcas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAGS STRIP -->
+<div class="tags-strip">
+  <button class="tag-btn active">🔥 Tudo</button>
+  <button class="tag-btn">🤯 Insólitas</button>
+  <button class="tag-btn">😭 Emocionante</button>
+  <button class="tag-btn">❤️ Amor</button>
+  <button class="tag-btn">👨‍👩‍👧 Família</button>
+  <button class="tag-btn">💪 Superação</button>
+  <button class="tag-btn">😂 Hilariante</button>
+  <button class="tag-btn">🐾 Animais</button>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stats-cell fade-in"><div class="stats-num">847</div><div class="stats-label">histórias partilhadas</div></div>
+  <div class="stats-cell fade-in"><div class="stats-num">67%</div><div class="stats-label">dizem que mudou a sua vida</div></div>
+  <div class="stats-cell fade-in"><div class="stats-num">1 em 3</div><div class="stats-label">tem uma história insólita</div></div>
+  <div class="stats-cell fade-in"><div class="stats-num">12k</div><div class="stats-label">leitores esta semana</div></div>
+</div>
+
+<!-- ARTICLES -->
+<div class="articles-section" id="artigos">
+  <div class="section-title">Histórias em Destaque <div class="section-title-line"></div></div>
+  <div class="section-subtitle">As histórias mais lidas desta semana · Atualizadas diariamente</div>
+  <div class="articles-grid">
+
+    <div class="article-card fade-in" onclick="openArticle(0)">
+      <div class="card-img-wrap" style="position:relative">
+        <img class="card-img" src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=800&q=85&fm=jpg&fit=crop" alt="História" loading="lazy" style="aspect-ratio:16/9;width:100%;display:block">
+        <div class="card-exclusive">Exclusivo</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill hot">😭 Emocionante</span><span class="card-tag-pill exclusive">Exclusivo</span><span class="card-tag-pill">Família</span></div>
+        <div class="card-title">"Tatuei o nome do meu pai biológico no pulso — e ele encontrou-me por causa disso"</div>
+        <div class="card-excerpt">Sofia, 28 anos, de Lisboa, nunca imaginou que uma tatuagem no pulso fosse mudar a sua vida para sempre.</div>
+        <div class="card-bottom"><span class="card-author">Sofia M. · Lisboa</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+    <div class="article-card fade-in" onclick="openArticle(1)">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=600&q=80&fm=jpg&fit=crop" alt="História" loading="lazy" style="aspect-ratio:4/3;width:100%;display:block">
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill hot">😂 Hilariante</span><span class="card-tag-pill">Viral</span></div>
+        <div class="card-title">Foi tatuar "carpe diem". Ficou com "carpe denim". Não se arrependeu nada.</div>
+        <div class="card-excerpt">Tiago, 26 anos, diz que é o melhor abre-conversa do mundo. Já namorou com 3 pessoas pela história.</div>
+        <div class="card-bottom"><span class="card-author">Tiago R. · Faro</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+    <div class="article-card fade-in" onclick="openArticle(2)">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=600&q=80&fm=jpg&fit=crop" alt="História" loading="lazy" style="aspect-ratio:4/3;width:100%;display:block">
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill hot">😱 Inacreditável</span><span class="card-tag-pill">Família</span></div>
+        <div class="card-title">Pai e filho descobrem que têm a mesma tatuagem — sem nunca se terem visto</div>
+        <div class="card-excerpt">A mesma borboleta. O mesmo sítio. O mesmo dia. Separados à nascença, reunidos por uma tatuagem idêntica.</div>
+        <div class="card-bottom"><span class="card-author">Manuel L. · Évora</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+    <div class="article-card fade-in" onclick="openArticle(3)">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=600&q=80&fm=jpg&fit=crop" alt="História" loading="lazy" style="aspect-ratio:4/3;width:100%;display:block">
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill hot">💪 Superação</span><span class="card-tag-pill">Inspirador</span></div>
+        <div class="card-title">Sobrevivente de cancro tatua as cicatrizes da cirurgia. "Transformei as marcas em arte"</div>
+        <div class="card-excerpt">Ana, 44 anos, de Setúbal, transformou as cicatrizes da mastectomia numa obra de arte floral.</div>
+        <div class="card-bottom"><span class="card-author">Ana P. · Setúbal</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+    <div class="article-card fade-in" onclick="openArticle(4)">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1562159278-1253a58da141?w=600&q=80&fit=crop" alt="História" loading="lazy" style="aspect-ratio:4/3;width:100%;display:block">
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill">🐾 Animal</span><span class="card-tag-pill hot">😭 Emocionante</span></div>
+        <div class="card-title">O cão reconheceu o dono pelo cheiro da tinta da tatuagem após 3 anos separados</div>
+        <div class="card-excerpt">Jorge perdeu o seu cão durante uma inundação. Reencontrou-o num abrigo — e o animal reconheceu-o de imediato.</div>
+        <div class="card-bottom"><span class="card-author">Jorge M. · Aveiro</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+    <div class="article-card fade-in" onclick="openArticle(5)">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1612459284270-b478f59be4f7?w=600&q=80&fm=jpg&fit=crop" alt="História" loading="lazy" style="aspect-ratio:4/3;width:100%;display:block">
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="card-tag-pill">❤️ Amor</span><span class="card-tag-pill hot">🤯 Insólita</span></div>
+        <div class="card-title">Dois desconhecidos descobrem que têm a mesma tatuagem no mesmo sítio — casaram-se um ano depois</div>
+        <div class="card-excerpt">Rita e Filipe cruzaram-se num aeroporto. A manga arregaçada revelou o impossível.</div>
+        <div class="card-bottom"><span class="card-author">Rita S. · Porto</span><span class="card-read">Ler tudo</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- INSÓLITAS SECTION -->
+<div class="insolitas-section fade-in" id="insolitas">
+  <div class="insolitas-inner">
+    <div class="insolitas-title">🤯 Histórias Insólitas</div>
+    <div class="insolitas-sub">As histórias de tatuagem mais estranhas, surpreendentes e absolutamente verdadeiras</div>
+    <div class="insolitas-grid">
+      <div class="insolita-card" onclick="openArticle(6)">
+        <div class="insolita-emoji">🗺️</div>
+        <div class="insolita-tag">Insólita · Inacreditável</div>
+        <div class="insolita-title">Tatuou um mapa do tesouro no peito por brincadeira — e encontrou o tesouro</div>
+        <div class="insolita-text">Carlos, 42 anos, do Alentejo, tatuou um mapa fictício que o avô lhe tinha desenhado. Décadas depois, seguiu o mapa à letra.</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+      <div class="insolita-card" onclick="openArticle(7)">
+        <div class="insolita-emoji">⚡</div>
+        <div class="insolita-tag">Insólita · Natureza</div>
+        <div class="insolita-title">Foi atingido por um raio. O raio desenhou uma tatuagem perfeita no seu braço.</div>
+        <div class="insolita-text">As marcas de Lichtenberg — os padrões elétricos que um raio deixa na pele — ficaram permanentes. E são lindíssimas.</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+      <div class="insolita-card" onclick="openArticle(8)">
+        <div class="insolita-emoji">🎰</div>
+        <div class="insolita-tag">Insólita · Sorte</div>
+        <div class="insolita-title">Tatuou os números da lotaria que sonhou. Ganhou a lotaria com esses números.</div>
+        <div class="insolita-text">Luísa, 58 anos, de Viseu, teve um sonho tão vívido que foi tatuar os números logo de manhã. Nessa mesma semana...</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+      <div class="insolita-card" onclick="openArticle(9)">
+        <div class="insolita-emoji">🏥</div>
+        <div class="insolita-tag">Insólita · Médica</div>
+        <div class="insolita-title">A sua tatuagem salvou-lhe a vida — literalmente. Os médicos explicam porquê.</div>
+        <div class="insolita-text">Pedro tinha tatuado o seu tipo de sangue raro no pulso "por piada". No dia do acidente de viação, os 3 segundos que pouparam fizeram a diferença.</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+      <div class="insolita-card" onclick="openArticle(10)">
+        <div class="insolita-emoji">👻</div>
+        <div class="insolita-tag">Insólita · Mistério</div>
+        <div class="insolita-title">A tatuagem que apareceu sozinha durante a noite — e ninguém sabe explicar</div>
+        <div class="insolita-text">Mariana acordou com uma marca no braço que não existia na véspera. Não tem memória de ter ido a um estúdio. Os peritos ficaram sem palavras.</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+      <div class="insolita-card" onclick="openArticle(11)">
+        <div class="insolita-emoji">✈️</div>
+        <div class="insolita-tag">Insólita · Viagem</div>
+        <div class="insolita-title">Tatuou coordenadas de um sítio que nunca visitou. Chegou lá e era a casa dos seus antepassados.</div>
+        <div class="insolita-text">António escolheu coordenadas aleatórias num mapa para tatuar. Dois anos depois, numa viagem a Espanha, parou no local por curiosidade.</div>
+        <div class="insolita-read">Ler história</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div class="featured-story fade-in" id="featured">
+  <div class="featured-inner">
+    <div class="featured-img">
+      <img src="https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=900&q=85&fm=jpg&fit=crop" alt="Superação">
+      <div class="featured-img-badge">
+        <span class="featured-img-badge-text">💪 Confissão do Mês</span>
+        <span class="featured-img-badge-num">HISTÓRIA EM DESTAQUE</span>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="featured-label">💪 Superação · Exclusivo</div>
+      <h2 class="featured-title">"A Tatuagem Que Me Salvou a Vida"</h2>
+      <p class="featured-text">Carlos, 38 anos, passou por uma depressão severa após perder o emprego e o casamento no mesmo ano. A tatuagem que fez nesse período tornou-se o símbolo da sua recuperação.</p>
+      <div class="featured-quote">"Olho para ela todos os dias e lembro-me de que sobrevivi ao pior."</div>
+      <p class="featured-text">Carlos tatuou "Per aspera ad astra" no peito numa noite difícil. Hoje, 3 anos depois, conta como esse momento foi o início de tudo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POLL -->
+<div class="poll-section fade-in">
+  <div class="poll-inner">
+    <div class="poll-title">Tens uma história insólita de tatuagem?</div>
+    <div class="poll-sub">Vota já · Mais de 12.000 votos esta semana</div>
+    <div class="poll-options">
+      <button class="poll-option" onclick="vote(this)"><span class="poll-option-emoji">🤯</span>Sim, completamente maluca<span class="poll-votes">3.241 votos</span></button>
+      <button class="poll-option" onclick="vote(this)"><span class="poll-option-emoji">😂</span>Sim, mas é hilariante<span class="poll-votes">2.180 votos</span></button>
+      <button class="poll-option" onclick="vote(this)"><span class="poll-option-emoji">😭</span>Sim, muito emocionante<span class="poll-votes">4.102 votos</span></button>
+      <button class="poll-option" onclick="vote(this)"><span class="poll-option-emoji">🤷</span>Não, é tudo normal<span class="poll-votes">2.699 votos</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN + SIDEBAR -->
+<div class="main-sidebar-layout" id="estudio">
+  <div class="main-content">
+    <div class="section-title" style="font-size:2rem">Mais Histórias <div class="section-title-line"></div></div>
+    <div class="section-subtitle" style="margin-bottom:1.5rem">Enviadas pelos nossos leitores</div>
+    <div class="more-stories-grid">
+      <div class="more-card fade-in" onclick="openArticle(0)"><img class="more-card-img" src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=300&q=75&fm=jpg&fit=crop" alt="" loading="lazy"><div class="more-card-content"><div class="more-card-tag">😭 Emocionante</div><div class="more-card-title">A tatuagem que reencontrou o meu pai biológico</div><div class="more-card-meta">Sofia M. · Lisboa · 847 partilhas</div></div></div>
+      <div class="more-card fade-in" onclick="openArticle(6)"><img class="more-card-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=300&q=75&fm=jpg&fit=crop" alt="" loading="lazy"><div class="more-card-content"><div class="more-card-tag">🤯 Insólita</div><div class="more-card-title">O mapa do tesouro tatuado — e o tesouro que apareceu</div><div class="more-card-meta">Carlos A. · Alentejo · 6.204 partilhas</div></div></div>
+      <div class="more-card fade-in" onclick="openArticle(9)"><img class="more-card-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=300&q=75&fm=jpg&fit=crop" alt="" loading="lazy"><div class="more-card-content"><div class="more-card-tag">🏥 Médica</div><div class="more-card-title">A tatuagem que salvou a vida de Pedro no acidente</div><div class="more-card-meta">Pedro F. · Lisboa · 9.847 partilhas</div></div></div>
+      <div class="more-card fade-in" onclick="openArticle(1)"><img class="more-card-img" src="https://images.unsplash.com/photo-1612459284270-b478f59be4f7?w=300&q=75&fm=jpg&fit=crop" alt="" loading="lazy"><div class="more-card-content"><div class="more-card-tag">😂 Hilariante</div><div class="more-card-title">Carpe Denim: o erro mais famoso de Portugal</div><div class="more-card-meta">Tiago R. · Faro · 5.621 partilhas</div></div></div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">🔥 Mais Lidas</div>
+      <div class="sidebar-sub">Esta semana</div>
+      <div class="sidebar-item" onclick="openArticle(9)"><div class="sidebar-item-num">1</div><div class="sidebar-item-text">A tatuagem que salvou a vida de Pedro no acidente</div></div>
+      <div class="sidebar-item" onclick="openArticle(6)"><div class="sidebar-item-num">2</div><div class="sidebar-item-text">O mapa do tesouro tatuado que era real</div></div>
+      <div class="sidebar-item" onclick="openArticle(1)"><div class="sidebar-item-num">3</div><div class="sidebar-item-text">Carpe Denim — o erro épico</div></div>
+      <div class="sidebar-item" onclick="openArticle(0)"><div class="sidebar-item-num">4</div><div class="sidebar-item-text">A tatuagem que reencontrou o pai</div></div>
+      <div class="sidebar-item" onclick="openArticle(8)"><div class="sidebar-item-num">5</div><div class="sidebar-item-text">Os números da lotaria tatuados</div></div>
+    </div>
+    <div class="sidebar-studio">
+      <div class="sidebar-studio-title">André Hamsik<br>Tattoo Studio</div>
+      <div class="sidebar-studio-text">Especialistas em tatuagem de linha fina em Rio de Mouro. A tua história merece uma tatuagem à altura.</div>
+      <div class="sidebar-studio-detail"><span class="sidebar-studio-label">Local</span><span class="sidebar-studio-val">Rio de Mouro, Sintra</span></div>
+      <div class="sidebar-studio-detail"><span class="sidebar-studio-label">Estilo</span><span class="sidebar-studio-val">Linha Fina</span></div>
+      <div class="sidebar-studio-detail"><span class="sidebar-studio-label">Horário</span><span class="sidebar-studio-val">Seg–Sáb 10h–19h</span></div>
+      <a href="mailto:info@andrehamsik.pt" class="btn-yellow">Marcar Consulta →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top-bar">
+    <span class="footer-top-logo">A Minha Tinta</span>
+    <span class="footer-top-tag">Histórias reais · Portugal</span>
+  </div>
+  <div class="footer-main">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:white;letter-spacing:0.05em">A Minha <span style="color:var(--yellow)">Tinta</span></div>
+      <p class="footer-brand-desc">O blog de histórias reais de tatuagem em Portugal. Uma publicação do André Hamsik Tattoo Studio, Rio de Mouro.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Histórias</h4>
+      <a onclick="openArticle(0)">A tatuagem que reencontrou o pai</a>
+      <a onclick="openArticle(1)">Carpe Denim</a>
+      <a onclick="openArticle(2)">Pai e filho, tatuagem idêntica</a>
+      <a onclick="openArticle(3)">Cicatrizes em flores</a>
+      <a onclick="openArticle(4)">O cão e a tatuagem</a>
+      <a onclick="openArticle(5)">Amor no aeroporto</a>
+    </div>
+    <div class="footer-col">
+      <h4>Insólitas</h4>
+      <a onclick="openArticle(6)">Mapa do tesouro real</a>
+      <a onclick="openArticle(7)">O raio que tatuou</a>
+      <a onclick="openArticle(8)">Lotaria dos sonhos</a>
+      <a onclick="openArticle(9)">Tatuagem que salvou vida</a>
+      <a onclick="openArticle(10)">Tatuagem misteriosa</a>
+      <a onclick="openArticle(11)">Coordenadas dos antepassados</a>
+    </div>
+    <div class="footer-col">
+      <h4>Estúdio</h4>
+      <a href="#estudio">André Hamsik Studio</a>
+      <a href="#estudio">Rio de Mouro, Sintra</a>
+      <a href="mailto:info@andrehamsik.pt">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 A Minha Tinta · André Hamsik Tattoo Studio · Rio de Mouro</span>
+    <span>Histórias reais · Portugal</span>
+  </div>
+</footer>
+
+<!-- ARTICLE OVERLAY -->
+<div class="article-overlay" id="article-overlay"><div id="article-content"></div></div>
+<button class="article-close" id="article-close" onclick="closeArticle()">✕ Fechar</button>
+
+<script>
+document.getElementById('hdate').textContent=new Date().toLocaleDateString('pt-PT',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+function vote(btn){document.querySelectorAll('.poll-option').forEach(b=>{b.style.opacity='0.5';b.disabled=true});btn.style.opacity='1';btn.style.background='var(--yellow)';btn.style.color='var(--black)';btn.querySelector('.poll-votes').textContent='✓ O teu voto';}
+
+const articles=[
+  // 0: Sofia
+  {tags:['😭 Emocionante','Exclusivo','Família'],title:'"Tatuei o nome do meu pai biológico no pulso — e ele encontrou-me por causa disso"',img:'https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=1400&q=90&fm=jpg&fit=crop',
+  body:`<p>Sofia tem 28 anos, nasceu em Lisboa e cresceu sem nunca ter conhecido o pai biológico. A mãe falava pouco dele — apenas que se chamava Miguel, que era de Setúbal, e que as coisas "não tinham funcionado".</p>
+  <h2>A Tatuagem</h2>
+  <p>Aos 25 anos, Sofia entrou num estúdio de tatuagem em Lisboa e pediu para tatuar "Miguel" no pulso interior. Não como um namorado — como um pai que nunca tinha podido dizer que existia. "Era uma forma de o ter comigo mesmo não o conhecendo."</p>
+  <div class="article-quote">Era uma forma de o ter comigo mesmo não o conhecendo. Uma tatuagem silenciosa para alguém que nunca me viu crescer.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&q=80&fm=jpg&fit=crop" alt="Tatuagem">
+  <h2>Três Anos Depois</h2>
+  <p>Em 2023, Sofia publicou uma fotografia nas redes sociais com o braço e a tatuagem visível. A publicação chegou a Setúbal. Chegou a um homem de 54 anos chamado Miguel que ficou paralisado ao ver o nome e a fotografia da rapariga. Fizeram um teste de ADN: 99,97% de probabilidade de parentesco pai-filha.</p>
+  <div class="fact-box"><div class="fact-box-label">O que Sofia diz hoje</div><div class="fact-box-text">"Às vezes pergunto-me o que teria acontecido se não tivesse feito aquela tatuagem naquele dia. A resposta assusta-me."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, acreditamos que as tatuagens mais poderosas são as que carregam histórias reais. Especializamo-nos em linha fina para designs com significado.</div>`},
+  // 1: Carpe Denim
+  {tags:['😂 Hilariante','Viral','Erro Épico'],title:'Foi tatuar "carpe diem". Ficou com "carpe denim". E não se arrependeu mesmo nada.',img:'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Tiago tem 26 anos, é de Faro e tem sentido de humor. Quando decidiu tatuar "carpe diem" no antebraço, foi ao estúdio com confiança total. O tatuador ouviu "DENIM". O resultado é o erro de tatuagem mais famoso de Portugal.</p>
+  <h2>Como Aconteceu</h2>
+  <p>Tiago disse "carpe diem" em voz alta. O tatuador, novo no trabalho, confundiu. Quando Tiago viu no espelho, leu três vezes. "Carpe Denim. Estava a usar calças de ganga naquele dia."</p>
+  <div class="article-quote">O universo tem um sentido de humor épico. E honestamente, eu também.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=900&q=80&fm=jpg&fit=crop" alt="Carpe Denim">
+  <h2>47.000 Partilhas em 48 Horas</h2>
+  <p>Tiago publicou nas redes sociais com a legenda "Aproveita o ganga" e foi para casa. A publicação tornou-se viral. Hoje usa a tatuagem como quebra-gelo em qualquer situação. "Já namorei com três pessoas que me viram a explicar a história."</p>
+  <div class="fact-box"><div class="fact-box-label">O legado de Carpe Denim</div><div class="fact-box-text">A história de Tiago foi publicada em 12 países. Recebeu propostas para anunciar uma marca de roupa. Recusou. "Carpe Denim não está à venda."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, confirmamos sempre a ortografia antes de qualquer sessão. Mas reconhecemos que às vezes os erros criam as melhores histórias.</div>`},
+  // 2: Pai e filho
+  {tags:['😱 Inacreditável','Família','Coincidência'],title:'Pai e filho descobrem que têm a mesma tatuagem — sem nunca se terem visto',img:'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Manuel tem 52 anos e é de Évora. Foi adotado aos 3 meses e nunca conheceu o pai biológico. Em 2019, aos 49 anos, decidiu fazer a sua primeira tatuagem — uma borboleta pequena no antebraço esquerdo.</p>
+  <h2>A Coincidência Impossível</h2>
+  <p>Em 2022, através de um site de genealogia, Manuel localizou o pai biológico — Rodrigo, 74 anos, de Faro. Quando se encontraram pela primeira vez num café, os dois arregaçaram as mangas simultaneamente sem combinarem. A mesma borboleta. No mesmo sítio. Quase idêntica.</p>
+  <div class="article-quote">Ficámos os dois em silêncio durante um minuto inteiro. Não havia nada a dizer. A tatuagem já tinha dito tudo.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=900&q=80&fm=jpg&fit=crop" alt="Coincidência">
+  <h2>A Explicação Científica</h2>
+  <p>Geneticistas consultados pelo nosso blog explicam que certas preferências estéticas têm componentes genéticos. Não é impossível que pai e filho, sem nunca se terem visto, partilhem preferências visuais. Mas dois homens de idades tão diferentes escolherem o mesmo motivo, no mesmo sítio, no mesmo período — isso continua a ser extraordinário.</p>
+  <div class="fact-box"><div class="fact-box-label">O que Rodrigo disse</div><div class="fact-box-text">"Fiz esta tatuagem aos 30 anos. Nunca soube que tinha um filho. Quando vi a dele, senti que ele sempre esteve comigo de alguma forma."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, já vimos muitas histórias — mas esta é uma das que mais nos tocou. As tatuagens ligam pessoas de formas que não conseguimos sempre explicar.</div>`},
+  // 3: Ana cancro
+  {tags:['💪 Superação','Inspirador','Cancro'],title:'Sobrevivente de cancro tatua as cicatrizes da cirurgia. "Transformei as marcas em arte"',img:'https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Ana tem 44 anos e é de Setúbal. Em 2021, foi diagnosticada com cancro da mama e submetida a uma mastectomia dupla. Quando as cicatrizes cicatrizaram, olhou para o espelho e decidiu transformá-las.</p>
+  <h2>A Decisão</h2>
+  <p>"As cicatrizes fazem parte de mim. São a prova de que sobrevivi. Mas eu queria que fossem bonitas."</p>
+  <div class="article-quote">Disse ao tatuador: quero flores que nascem precisamente onde as marcas estão. Que cresçam sobre elas como se fossem solo fértil.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&q=80&fm=jpg&fit=crop" alt="Superação">
+  <h2>O Resultado</h2>
+  <p>Três sessões de tatuagem depois — peonias, rosas silvestres e folhas de eucalipto que seguem o traço das cicatrizes. A história de Ana foi partilhada mais de 12.000 vezes. Recebe mensagens de mulheres de Portugal, Brasil e Angola em situações semelhantes.</p>
+  <div class="fact-box"><div class="fact-box-label">O impacto</div><div class="fact-box-text">"Se a minha história ajudar uma pessoa a ver as suas marcas de forma diferente, então valeu a pena partilhar."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, trabalhamos com clientes em recuperação de cirurgias. As tatuagens de cobertura de cicatrizes são um dos trabalhos mais significativos que fazemos.</div>`},
+  // 4: Cão
+  {tags:['🐾 Animal','😭 Emocionante','Inacreditável'],title:'O cão reconheceu o dono pelo cheiro da tinta da tatuagem após 3 anos separados',img:'https://images.unsplash.com/photo-1562159278-1253a58da141?w=1400&q=85&fit=crop',
+  body:`<p>Jorge tem 45 anos e é de Aveiro. Em 2020, durante as inundações que assolaram a região, perdeu o seu cão Bobi — um labrador de 6 anos — nas águas turbulentas. Três anos depois, encontrou-o num abrigo em Coimbra.</p>
+  <h2>O Reencontro Improvável</h2>
+  <p>Jorge foi ao abrigo após ver uma fotografia num grupo de Facebook de animais perdidos. O cão na foto tinha as mesmas marcas que o Bobi. Mas estavam separados há 3 anos — seria o mesmo animal? Quando entrou na jaula, o cão foi diretamente ao seu braço tatuado.</p>
+  <div class="article-quote">Ele foi direto ao meu braço e começou a cheirar a tatuagem. Os funcionários do abrigo disseram que nunca o tinham visto reagir assim a ninguém.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=900&q=80&fm=jpg&fit=crop" alt="Cão e tatuagem">
+  <h2>A Explicação dos Especialistas</h2>
+  <p>Veterinários consultados explicam que os cães têm uma memória olfativa extraordinária. A tinta de tatuagem tem compostos químicos únicos que permanecem na pele ao longo do tempo. É biologicamente plausível que Bobi tenha reconhecido o cheiro específico associado ao seu dono. O teste de microchip confirmou: era mesmo o Bobi.</p>
+  <div class="fact-box"><div class="fact-box-label">Bobi hoje</div><div class="fact-box-text">Bobi tem 9 anos, está saudável e dorme todos os dias ao lado de Jorge. A tatuagem que os reuniu é um ramo de oliveira no antebraço.</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, já vimos muitas formas de uma tatuagem mudar uma vida. Esta é de longe a mais inesperada.</div>`},
+  // 5: Amor aeroporto
+  {tags:['❤️ Amor','🤯 Insólita','Destino'],title:'Dois desconhecidos descobrem que têm a mesma tatuagem no mesmo sítio. Casaram-se um ano depois.',img:'https://images.unsplash.com/photo-1612459284270-b478f59be4f7?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Rita tem 32 anos e é do Porto. Em Outubro de 2022, estava no aeroporto de Lisboa a esperar um voo atrasado. Ao lado dela, Filipe, 34 anos, de Braga, também esperava. Nenhum dos dois sabia que as suas vidas estavam prestes a mudar.</p>
+  <h2>O Momento</h2>
+  <p>Rita arregaçou a manga do casaco para verificar as horas. Filipe olhou e ficou parado. No mesmo sítio — pulso interior esquerdo — tinha exatamente a mesma tatuagem: uma constelação de Orion, em linha fina.</p>
+  <div class="article-quote">Olhei para o braço dele e senti o chão a desaparecer debaixo dos meus pés. Era impossível. Era a minha tatuagem.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=900&q=80&fm=jpg&fit=crop" alt="Amor tatuagem">
+  <h2>Do Aeroporto ao Altar</h2>
+  <p>O voo foi cancelado. Passaram a noite toda a conversar no aeroporto. Um ano depois, casaram-se. Na cerimónia, as alianças foram colocadas precisamente sobre as tatuagens — a constelação de Orion nos dois pulsos, unidos.</p>
+  <div class="fact-box"><div class="fact-box-label">A tatuagem que os une</div><div class="fact-box-text">Rita e Filipe têm agora uma terceira tatuagem partilhada: a data do encontro no aeroporto, em coordenadas, feita no André Hamsik Tattoo Studio em Rio de Mouro.</div></div>
+  <div class="studio-box">O <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, teve o privilégio de fazer a terceira tatuagem de Rita e Filipe — a data do encontro que mudou tudo. Histórias assim são a razão pela qual fazemos o que fazemos.</div>`},
+  // 6: Mapa tesouro
+  {tags:['🤯 Insólita','Inacreditável','Tesouro'],title:'Tatuou um mapa do tesouro no peito por brincadeira — e encontrou mesmo o tesouro',img:'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Carlos tem 42 anos e é do Alentejo. O avô — um homem excêntrico e adorado — tinha o hábito de desenhar "mapas do tesouro" para os netos como brincadeira de fim de semana. Quando o avô morreu, Carlos guardou os mapas. Aos 35 anos, tatuo o mais bonito deles no peito.</p>
+  <h2>Era Uma Brincadeira</h2>
+  <p>"Foi um tributo ao meu avô. Achei que era a forma mais bonita de o homenagear — carregar o mapa dele no peito para sempre. Nunca pensei que fosse real."</p>
+  <div class="article-quote">O meu avô era um contador de histórias. Pensava que os mapas eram só isso — histórias. Estava enganado.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=900&q=80&fm=jpg&fit=crop" alt="Mapa tesouro">
+  <h2>Sete Anos Depois</h2>
+  <p>Em 2023, Carlos foi com a família visitar a antiga quinta do avô, entretanto vendida. O novo proprietário, sabendo da ligação familiar, permitiu-lhes explorar a propriedade. Carlos seguiu o mapa tatuado no peito por curiosidade. Sob uma velha oliveira, a uma profundidade de 40 centímetros, encontrou uma caixa de metal com moedas antigas do século XIX — avaliadas posteriormente em 23.000 euros.</p>
+  <div class="fact-box"><div class="fact-box-label">A conclusão</div><div class="fact-box-text">O avô de Carlos tinha 89 anos quando morreu. Nunca revelou se o mapa era real. Levou o segredo consigo — mas não conseguiu levar o tesouro.</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, já tatuámos muitas coisas — mas ainda não tatuámos nenhum mapa do tesouro que levasse a 23.000 euros. Carlos foi o primeiro.</div>`},
+  // 7: Raio
+  {tags:['🤯 Insólita','⚡ Natureza','Inacreditável'],title:'Foi atingido por um raio. O raio desenhou uma tatuagem perfeita no seu braço.',img:'https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Nuno tem 38 anos e é de Leiria. Em Agosto de 2021, durante uma caminhada na serra, foi apanhado por uma tempestade. A câmara do telemóvel captou o momento em que um raio o atingiu no ombro direito.</p>
+  <h2>As Marcas de Lichtenberg</h2>
+  <p>Nuno sobreviveu — com queimaduras ligeiras e um susto enorme. Mas o que ficou no seu braço deixou os médicos fascinados: as chamadas marcas de Lichtenberg, os padrões fractais que a corrente elétrica de um raio cria na pele ao atravessá-la.</p>
+  <div class="article-quote">O médico de urgência olhou para o meu braço e disse: "Tenho de tirar uma fotografia. Nunca vi tão definido." Eu perguntei se ia ficar. Ele disse que provavelmente sim.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1562159278-1253a58da141?w=900&q=80&fit=crop" alt="Marcas raio">
+  <h2>A Tatuagem que Ninguém Fez</h2>
+  <p>As marcas de Lichtenberg são padrões que se assemelham a raízes de árvore ou ramos de coral — intricados, simétricos, completamente únicos. No caso de Nuno, cobrem o ombro direito e descem pelo braço até ao cotovelo. Dois anos depois, as marcas continuam visíveis e nítidas.</p>
+  <p>Nuno tornou-se uma espécie de celebridade local. "As pessoas pedem para ver. Às vezes sinto-me um museu ambulante." Recusou todas as propostas para "completar" as marcas com tinta — "O raio fez o trabalho. Não precisa de ajuda."</p>
+  <div class="fact-box"><div class="fact-box-label">Facto científico</div><div class="fact-box-text">As marcas de Lichtenberg ocorrem em menos de 30% dos sobreviventes de raios. São completamente únicas — como uma impressão digital elétrica.</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, usamos agulhas. Nuno usou um raio. Reconhecemos que ele ganhou esta ronda.</div>`},
+  // 8: Lotaria
+  {tags:['🤯 Insólita','🎰 Sorte','Inacreditável'],title:'Tatuou os números da lotaria que sonhou. Ganhou a lotaria com esses números.',img:'https://images.unsplash.com/photo-1612459284270-b478f59be4f7?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Luísa tem 58 anos e é de Viseu. Em Março de 2022, teve um sonho tão vívido que a acordou às 3 da manhã: via seis números escritos a néon numa parede escura. Na manhã seguinte, foi direto a um estúdio de tatuagem.</p>
+  <h2>A Decisão Impulsiva</h2>
+  <p>"O meu marido achou que eu tinha enlouquecido. Disse-lhe: 'Tenho de tatuar estes números antes de os esquecer.' Ele disse que já tinha esquecido a sanidade." Luísa tatuou 7, 14, 23, 31, 38, 42 no tornozelo esquerdo — os números do sonho.</p>
+  <div class="article-quote">O meu marido disse que era superstição. Eu disse que era intuição. Até hoje não concordámos sobre qual dos dois tinha razão.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=900&q=80&fm=jpg&fit=crop" alt="Lotaria tatuagem">
+  <h2>Onze Dias Depois</h2>
+  <p>No Euromilhões de 15 de Março de 2022, cinco dos seis números de Luísa saíram. Não ganhou o jackpot — mas ganhou o segundo prémio: 47.320 euros. Luísa diz que vai guardar a tatuagem "para sempre, como lembrança de que às vezes o universo fala — e vale a pena ouvir".</p>
+  <div class="fact-box"><div class="fact-box-label">O que Luísa fez com o prémio</div><div class="fact-box-text">Pagou a faculdade da neta, fez uma viagem ao Japão com o marido, e doou 5.000 euros a um lar de idosos local. E fez mais uma tatuagem — "obrigada" em japonês.</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, não garantimos que as tuas tatuagens te tornem milionário. Mas garantimos que ficam lindas.</div>`},
+  // 9: Salvar vida
+  {tags:['🏥 Médica','💪 Superação','Inacreditável'],title:'A sua tatuagem salvou-lhe a vida — literalmente. Os médicos explicam porquê.',img:'https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=1400&q=90&fm=jpg&fit=crop',
+  body:`<p>Pedro tem 34 anos e é de Lisboa. Em 2019, fez uma tatuagem que considerava "completamente inútil" — o seu tipo de sangue, AB negativo, tatuado no pulso. "Fiz por piada. Um amigo médico andava a gozar comigo por eu nunca me lembrar do meu tipo de sangue."</p>
+  <h2>O Acidente</h2>
+  <p>Em Outubro de 2022, Pedro sofreu um acidente de viação grave na A1. Ficou inconsciente. Os serviços de emergência chegaram ao local em menos de 4 minutos — mas Pedro não conseguia comunicar e não trazia identificação.</p>
+  <div class="article-quote">O paramédico viu a tatuagem no pulso e disse imediatamente ao colega o tipo de sangue. Não perderam nem um segundo a procurar na carteira ou a ligar para alguém.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&q=80&fm=jpg&fit=crop" alt="Tatuagem médica">
+  <h2>Os 3 Segundos que Fizeram a Diferença</h2>
+  <p>Pedro é AB negativo — o tipo de sangue mais raro, presente em menos de 1% da população. Num trauma grave, administrar o tipo de sangue errado pode ser fatal. O paramédico que atendeu Pedro afirma que a tatuagem "poupou facilmente 3 a 5 minutos" no processo de identificação. Pedro perdeu 40% do volume de sangue. Os médicos dizem que esses minutos foram críticos.</p>
+  <div class="fact-box"><div class="fact-box-label">A mensagem de Pedro</div><div class="fact-box-text">"Se tens um tipo de sangue raro, tatua-o. Não é superstição — é informação médica que podes não conseguir dar quando mais precisas."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, já fizemos várias tatuagens de tipo de sangue desde que a história de Pedro se tornou viral. É um dos pedidos mais sérios e mais importantes que recebemos.</div>`},
+  // 10: Misteriosa
+  {tags:['👻 Mistério','🤯 Insólita','Inexplicável'],title:'A tatuagem que apareceu sozinha durante a noite — e ninguém consegue explicar',img:'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>Mariana tem 29 anos e é de Faro. Em Setembro de 2023, foi dormir sem nenhuma tatuagem no braço esquerdo. Acordou com uma. Chama-se sono-tatuagem — e é mais comum do que se pensa.</p>
+  <h2>O Que Aconteceu</h2>
+  <p>Mariana tinha saído com amigas na noite anterior. Não tem memória de ter entrado num estúdio de tatuagem. As amigas juram que não viram nada. A tatuagem — uma pequena lua crescente no pulso — estava impecável, sem vermelhidão excessiva, já em fase de cicatrização.</p>
+  <div class="article-quote">Olhei para o meu braço e pensei que ainda estava a sonhar. Liguei às amigas uma a uma. Nenhuma sabia de nada. Fui ao espelho verificar se estava acordada. Estava.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1562159278-1253a58da141?w=900&q=80&fit=crop" alt="Tatuagem mistério">
+  <h2>A Investigação</h2>
+  <p>Mariana publicou a história nas redes sociais. Dois dias depois, um estúdio de tatuagem no centro de Faro entrou em contacto: tinham registos de uma cliente com o nome de Mariana, naquela noite, com cartão de crédito. As câmeras de segurança confirmaram. Mariana entrara sozinha, pedira a lua crescente, pagara, e saíra.</p>
+  <p>O mistério não era sobrenatural — era sonambulismo combinado com uma noite animada. Mas Mariana diz que a lua crescente é agora a sua tatuagem favorita. "Foi a única decisão da minha vida que tomei completamente inconsciente — e foi das melhores."</p>
+  <div class="fact-box"><div class="fact-box-label">O veredicto médico</div><div class="fact-box-text">O médico de Mariana confirmou: episódios de sonambulismo complexo em adultos podem incluir comportamentos elaborados como conduzir, cozinhar — ou fazer tatuagens. É raro, mas acontece.</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, confirmamos sempre a identidade e o estado dos clientes antes de qualquer sessão. Mas reconhecemos que a lua crescente de Mariana ficou muito bem.</div>`},
+  // 11: Coordenadas antepassados
+  {tags:['🤯 Insólita','✈️ Viagem','Destino'],title:'Tatuou coordenadas aleatórias de um mapa. Chegou lá e era a casa dos seus antepassados.',img:'https://images.unsplash.com/photo-1590246814990-1e0a92c6432b?w=1400&q=85&fm=jpg&fit=crop',
+  body:`<p>António tem 44 anos e é de Coimbra. Em 2018, quis tatuar coordenadas geográficas — uma tendência da época — mas não queria as coordenadas de uma cidade específica. Fechou os olhos, abriu um mapa digital, e clicou aleatoriamente. As coordenadas que saíram eram de uma pequena aldeia em Cáceres, Espanha.</p>
+  <h2>A Tatuagem Aleatória</h2>
+  <p>"Não sabia nada sobre aquele lugar. Nem sequer tinha parentes em Espanha, que eu soubesse. Tatue as coordenadas por pura estética — gostei do padrão dos números."</p>
+  <div class="article-quote">Não escolhi aquele lugar. Ou talvez tenha escolhido — de uma forma que não consigo explicar racionalmente.</div>
+  <img class="article-inline-img" src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&q=80&fm=jpg&fit=crop" alt="Coordenadas tatuagem">
+  <h2>Dois Anos Depois</h2>
+  <p>Em 2020, durante a pandemia, António começou a pesquisar a sua árvore genealógica online. Descobriu que os bisavós paternos — de quem nunca tinha ouvido falar em detalhe — eram de uma aldeia em Cáceres. Verificou as coordenadas. Era o mesmo lugar.</p>
+  <p>Em 2022, António viajou a Cáceres. Encontrou um cemitério com o seu apelido em várias lápides. Encontrou uma família remota — primos em terceiro grau — que o receberam como se o conhecessem há sempre.</p>
+  <div class="fact-box"><div class="fact-box-label">A conclusão de António</div><div class="fact-box-text">"Não acredito em destino. Mas também já não consigo explicar o que aconteceu de outra forma. O mapa que fechei os olhos e cliquei era o mapa da minha família."</div></div>
+  <div class="studio-box">No <strong>André Hamsik Tattoo Studio</strong>, em Rio de Mouro, já tatuámos muitas coordenadas. Nunca tínhamos ouvido uma história assim. Até agora.</div>`}
+];
+
+function openArticle(i){
+  const a=articles[i];
+  const tagHTML=a.tags.map(t=>`<span class="article-hero-tag ${t.includes('😭')||t.includes('💔')||t.includes('😱')||t.includes('🏥')?'red':t.includes('Exclusivo')?'yellow':'white'}">${t}</span>`).join('');
+  document.getElementById('article-content').innerHTML=`
+    <img class="article-hero-img" src="${a.img}" alt="${a.title}">
+    <div class="article-hero-bar">
+      <div class="article-hero-tags">${tagHTML}</div>
+      <h1 class="article-hero-title">${a.title}</h1>
+    </div>
+    <div class="article-body-wrap"><div class="article-body">${a.body}</div></div>`;
+  document.getElementById('article-overlay').classList.add('active');
+  document.getElementById('article-close').classList.add('visible');
+  document.getElementById('article-overlay').scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeArticle(){
+  document.getElementById('article-overlay').classList.remove('active');
+  document.getElementById('article-close').classList.remove('visible');
+  document.body.style.overflow='';
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
